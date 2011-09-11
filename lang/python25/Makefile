@@ -15,20 +15,20 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 CONFLICTS+=	python-[0-9]*
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--with-threads
-CONFIGURE_ARGS+=	--enable-shared
-CONFIGURE_ARGS+=	OPT=${CFLAGS:M*:Q}
+CONFIGURE_ARGS+=	--without-threads
+CONFIGURE_ARGS+=	--disable-shared
+CONFIGURE_ARGS+=	OPT=${M*:Q}
 CONFIGURE_ARGS+=	--with-system-ffi
 
 LDFLAGS+=		-L${WRKSRC}
 
 USE_LANGUAGES=		c c++
 
-PTHREAD_OPTS+=	require
-.include "../../mk/pthread.buildlink3.mk"
-.if ${PTHREAD_TYPE} == "pth"
-CONFIGURE_ARGS+=	--with-pth
-.endif
+#PTHREAD_OPTS+=	require
+#.include "../../mk/pthread.buildlink3.mk"
+#.if ${PTHREAD_TYPE} == "pth"
+#CONFIGURE_ARGS+=	--with-pth
+#.endif
 
 .include "../../mk/bsd.prefs.mk"
 

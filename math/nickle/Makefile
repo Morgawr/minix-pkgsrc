@@ -10,6 +10,8 @@ HOMEPAGE=	http://nickle.org/
 COMMENT=	Desk calculator language
 LICENSE=	mit
 
+#CONFIGURE_ARGS += --without-readline
+
 PKG_DESTDIR_SUPPORT=	user-destdir
 
 GNU_CONFIGURE=	yes

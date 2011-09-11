@@ -1,8 +1,8 @@
 $NetBSD$
 
---- setup.py.orig	2011-06-11 15:48:52.000000000 +0000
+--- setup.py.orig	Sat Jun 11 15:48:52 2011
 +++ setup.py
-@@ -17,7 +17,7 @@ from distutils.command.install_lib impor
+@@ -17,7 +17,7 @@ from distutils.command.install_lib import install_lib
  from distutils.spawn import find_executable
  
  # This global variable is used to hold the list of modules to be disabled.
@@ -30,6 +30,15 @@ $NetBSD$
          self.add_multiarch_paths()
  
          # Add paths specified in the environment variables LDFLAGS and
+@@ -447,7 +453,7 @@ class PyBuildExt(build_ext):
+             #   NOTE: using shlex.split would technically be more correct, but
+             # also gives a bootstrap problem. Let's hope nobody uses directories
+             # with whitespace in the name to store libraries.
+-            cflags, ldflags = sysconfig.get_config_vars(
++            (cflags, ldflags) = sysconfig.get_config_vars(
+                     'CFLAGS', 'LDFLAGS')
+             for item in cflags.split():
+                 if item.startswith('-I'):
 @@ -674,9 +680,7 @@ class PyBuildExt(build_ext):
              if krb5_h:
                  ssl_incs += krb5_h
@@ -56,7 +65,7 @@ $NetBSD$
          else:                                   # Linux and other unices
              macros = dict()
              libraries = ['rt']
-@@ -1831,8 +1843,8 @@ def main():
+@@ -1831,9 +1843,10 @@ def main():
            # called unless there's at least one extension module defined.
            ext_modules=[Extension('_struct', ['_struct.c'])],
  
@@ -65,5 +74,7 @@ $NetBSD$
 +          scripts = ["Tools/scripts/pydoc3.1", "Tools/scripts/idle3",
 +                     "Tools/scripts/2to3-3.1"]
          )
++
  
  # --install-platlib
+ if __name__ == '__main__':

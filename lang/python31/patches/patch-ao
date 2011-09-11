@@ -1,6 +1,6 @@
 $NetBSD: patch-ao,v 1.1.1.1 2009/04/19 14:42:50 wiz Exp $
 
---- Lib/distutils/util.py.orig	2010-11-06 02:58:56.000000000 +0000
+--- Lib/distutils/util.py.orig	Sat Jun 11 15:48:49 2011
 +++ Lib/distutils/util.py
 @@ -177,6 +177,8 @@ def get_platform ():
                  # See 'i386' case

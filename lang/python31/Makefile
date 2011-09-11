@@ -16,9 +16,8 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 CONFLICTS+=	python-[0-9]*
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--with-threads
-CONFIGURE_ARGS+=	--enable-shared
-CONFIGURE_ARGS+=	OPT=${CFLAGS:M*:Q}
+
+CONFIGURE_ARGS+=	OPT=${M*:Q}
 CONFIGURE_ARGS+=	--with-system-ffi
 
 LDFLAGS+=		-L${WRKSRC}
@@ -30,6 +29,8 @@ CHECK_PORTABILITY_SKIP+=	Mac/BuildScript/scripts/postflight.patch-profile
 
 USE_LANGUAGES=		c c++
 
+
+
 PTHREAD_OPTS+=	require
 .include "../../mk/pthread.buildlink3.mk"
 .if ${PTHREAD_TYPE} == "pth"
@@ -37,6 +38,15 @@ CONFIGURE_ARGS+=	--with-pth
 .endif
 
 .include "../../mk/bsd.prefs.mk"
+
+.if ${OPSYS} == "Minix"
+CONFIGURE_ARGS +=	--without-threads
+CONFIGURE_ARGS +=	--disable-shared
+.else
+CONFIGURE_ARGS +=       --with-threads
+CONFIGURE_ARGS +=	--enable-shared
+.endif
+
 
 # fdatasync()
 LIBS.SunOS+=		-lrt
@@ -164,6 +174,8 @@ post-install:
 	${LN} -fs ${DESTDIR}${PREFIX}/lib/libpython3.1.sl \
 		${DESTDIR}${PREFIX}/lib/libpython3.1.sl.1.0
 .endif
+
+LIBS.Minix +=			-lcrypt
 
 USE_GNU_READLINE=			yes
 BUILDLINK_DEPMETHOD.readline=		build

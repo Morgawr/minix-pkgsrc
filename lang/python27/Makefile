@@ -15,9 +15,9 @@ PKG_DESTDIR_SUPPORT=	user-destdir
 CONFLICTS+=	python-[0-9]*
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--with-threads
-CONFIGURE_ARGS+=	--enable-shared
-CONFIGURE_ARGS+=	OPT=${CFLAGS:Q}
+CONFIGURE_ARGS+=	--without-threads
+CONFIGURE_ARGS+=	--disable-shared
+CONFIGURE_ARGS+=	OPT=${Q}
 CONFIGURE_ARGS+=	--with-system-ffi
 CONFIGURE_ARGS+=	--with-dbmliborder=ndbm:bdb
 
@@ -28,11 +28,11 @@ CHECK_PORTABILITY_SKIP=	Tools/faqwiz/move-faqwiz.sh
 
 USE_LANGUAGES=		c c++
 
-PTHREAD_OPTS+=	require
-.include "../../mk/pthread.buildlink3.mk"
-.if ${PTHREAD_TYPE} == "pth"
-CONFIGURE_ARGS+=	--with-pth
-.endif
+#PTHREAD_OPTS+=	require
+#.include "../../mk/pthread.buildlink3.mk"
+#.if ${PTHREAD_TYPE} == "pth"
+#CONFIGURE_ARGS+=	--with-pth
+#.endif
 
 .include "../../mk/bsd.prefs.mk"
 
