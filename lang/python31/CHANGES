@@ -1,0 +1,14 @@
+Changes to get python3.1 to run on Minix3 (without shared libraries):
+
+- Had to modify the pkgsrc/lang/python31/Makefile to make it similar to the one in python24 (which works), added --disable-shared and --without-threads
+- Removed OPT flag in CFLAGS for redundancy (in Makefile)
+- OPTIONAL: Lib/Modules/sysinfo.py (in the build directory) should be changed to remove CFLAGS/CPPFLAGS to be added to LDFLAGS as it causes problems in linking libraries (this "bug" is in all python 
+versions)
+- Removed all the .pyo, .pyc files from PLIST.common because newer versions of python apparently don't generate them anymore (hence why the build failed). At least as far as I know, I may be wrong.
+
+That's it! :)
+
+
+
+Package changes done by Morgawr, you can mail me at morgawr@gmail.com or find me at http://pareschi.web.cs.unibo.it/. 
+Thanks to everybody in the #minix group for helping me out, especially beng-nl.
