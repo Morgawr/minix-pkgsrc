@@ -34,7 +34,7 @@ SPECIAL_PERMS+=		libexec/dbus-daemon-launch-helper ${REAL_ROOT_USER} ${DBUS_GROU
 CONFIGURE_ARGS+=	--localstatedir=${VARBASE:Q}
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR:Q}
 
-#CFLAGS.NetBSD+=		-D_NETBSD_SOURCE
+CFLAGS.NetBSD+=		-D_NETBSD_SOURCE
 
 CONFIGURE_ARGS_GROUPS=	enable disable with without
 
@@ -108,6 +108,12 @@ BUILDLINK_TRANSFORM+=	rm:-fPIE
 BUILDLINK_TRANSFORM+=	rm:-pie
 
 .include "options.mk"
+
+.if ${OPSYS} == "Minix"
+post-patch:
+	${CP} ${FILESDIR}/dbus-sysdeps-unix.c ${WRKSRC}/dbus/dbus-sysdeps-unix.c
+	${CP} ${FILESDIR}/dbus-sysdeps-util-unix.c ${WRKSRC}/dbus/dbus-sysdeps-util-unix.c
+.endif
 
 .if ${OPSYS} == "Linux"
 post-install:
