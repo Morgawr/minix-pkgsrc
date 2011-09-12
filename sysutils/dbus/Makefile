@@ -34,7 +34,7 @@ SPECIAL_PERMS+=		libexec/dbus-daemon-launch-helper ${REAL_ROOT_USER} ${DBUS_GROU
 CONFIGURE_ARGS+=	--localstatedir=${VARBASE:Q}
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR:Q}
 
-#CFLAGS.NetBSD+=		-D_NETBSD_SOURCE
+CFLAGS.NetBSD+=		-D_NETBSD_SOURCE
 
 CONFIGURE_ARGS_GROUPS=	enable disable with without
 
