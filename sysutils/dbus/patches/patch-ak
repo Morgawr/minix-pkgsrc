@@ -1,8 +1,8 @@
 $NetBSD$
 
---- dbus/Makefile.in.orig	2008-08-07 04:43:39.000000000 +0900
+--- dbus/Makefile.in.orig	Wed May  6 17:35:36 2009
 +++ dbus/Makefile.in
-@@ -310,7 +310,7 @@ top_builddir = @top_builddir@
+@@ -308,7 +308,7 @@ top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  configdir = $(sysconfdir)/dbus-1
  INCLUDES = -I$(top_builddir) -I$(top_srcdir) $(DBUS_CLIENT_CFLAGS) @PIC_CFLAGS@ -DDBUS_COMPILATION	\

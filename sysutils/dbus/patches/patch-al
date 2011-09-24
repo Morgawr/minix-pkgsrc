@@ -1,8 +1,8 @@
 $NetBSD$
 
---- tools/Makefile.in.orig	2008-08-07 04:43:39.000000000 +0900
+--- tools/Makefile.in.orig	Wed May  6 17:35:36 2009
 +++ tools/Makefile.in
-@@ -301,7 +301,7 @@ target_vendor = @target_vendor@
+@@ -299,7 +299,7 @@ top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  configdir = $(sysconfdir)/dbus-1
@@ -11,7 +11,7 @@ $NetBSD$
  dbus_send_SOURCES = \
  	dbus-print-message.c			\
  	dbus-print-message.h			\
-@@ -337,8 +337,8 @@ CLEANFILES = \
+@@ -335,8 +335,8 @@ CLEANFILES = \
  	run-with-tmp-session-bus.conf
  
  

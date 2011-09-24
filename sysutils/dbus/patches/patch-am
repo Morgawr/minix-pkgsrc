@@ -1,8 +1,8 @@
 $NetBSD$
 
---- tools/dbus-launch-x11.c.orig	2008-11-14 22:45:04.000000000 -0500
-+++ tools/dbus-launch-x11.c	2008-11-14 22:45:44.000000000 -0500
-@@ -143,7 +143,7 @@
+--- tools/dbus-launch-x11.c.orig	Wed May  6 17:26:48 2009
++++ tools/dbus-launch-x11.c
+@@ -143,7 +143,7 @@ get_session_file (void)
     */
    for (p = display; *p; ++p)
      {

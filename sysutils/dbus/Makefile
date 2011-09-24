@@ -109,12 +109,6 @@ BUILDLINK_TRANSFORM+=	rm:-pie
 
 .include "options.mk"
 
-.if ${OPSYS} == "Minix"
-post-patch:
-	${CP} ${FILESDIR}/dbus-sysdeps-unix.c ${WRKSRC}/dbus/dbus-sysdeps-unix.c
-	${CP} ${FILESDIR}/dbus-sysdeps-util-unix.c ${WRKSRC}/dbus/dbus-sysdeps-util-unix.c
-.endif
-
 .if ${OPSYS} == "Linux"
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/bus/rc.messagebus \

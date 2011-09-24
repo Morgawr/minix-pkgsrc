@@ -1,8 +1,8 @@
 $NetBSD$
 
---- configure.orig	2009-05-06 12:35:38.000000000 -0500
-+++ configure	2009-12-01 13:23:46.338973100 -0600
-@@ -6110,6 +6110,224 @@
+--- configure.orig	Wed May  6 17:35:38 2009
++++ configure
+@@ -6110,7 +6110,225 @@ esac
  
  need_locks="$enable_libtool_lock"
  
@@ -48,7 +48,7 @@ $NetBSD$
 +else
 +  echo "$as_me: failed program was:" >&5
 +sed 's/^/| /' conftest.$ac_ext >&5
-+
+ 
 +	ac_header_compiler=no
 +fi
 +
@@ -224,10 +224,11 @@ $NetBSD$
 +fi
 +
 +
- 
++
  # On IRIX 5.3, sys/types and inttypes.h are conflicting.
  
-@@ -20958,7 +21176,10 @@
+ 
+@@ -20958,7 +21176,10 @@ if test "x$GCC" = "xyes"; then
    esac
    case " $CFLAGS " in
    *[\ \	]-Wno-pointer-sign[\ \	]*) ;;
@@ -239,3 +240,12 @@ $NetBSD$
    esac
  
    # http://bugs.freedesktop.org/show_bug.cgi?id=19195
+@@ -31154,6 +31375,8 @@ do
+   case $ac_option in
+   # Handling of the options.
+   -recheck | --recheck | --rechec | --reche | --rech | --rec | --re | --r)
++	: Avoid regenerating within pkgsrc
++	exit 0
+     ac_cs_recheck=: ;;
+   --version | --versio | --versi | --vers | --ver | --ve | --v | -V )
+     $as_echo "$ac_cs_version"; exit ;;
